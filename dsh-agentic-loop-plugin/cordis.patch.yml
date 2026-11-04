@@ -1,0 +1,8 @@
+# Agentic Loop Plugin - DSH bundle patch
+# The module has no apply(ctx, config) and reads no config key, so only the
+# enable flag is declared here.
+- insert:
+    - id: agentic-loop
+      name: 'dsh-agentic-loop'
+      config:
+        enabled: true

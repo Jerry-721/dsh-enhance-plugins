@@ -1,0 +1,21 @@
+{
+  "name": "dsh-mcp",
+  "version": "1.0.0",
+  "description": "DSH MCP 集成 - Server 发现 + Schema 转译 + Tool 注册",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=0.1.0"
+  }
+}

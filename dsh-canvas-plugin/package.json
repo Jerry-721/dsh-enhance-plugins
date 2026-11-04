@@ -1,0 +1,10 @@
+{
+  "name": "dsh-canvas",
+  "version": "1.0.0",
+  "description": "Canvas 实时协作编辑 - 移植自 ChatGPT Canvas",
+  "type": "module",
+  "main": "index.js",
+  "exports": { ".": "./index.js" },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "dependencies": {}
+}

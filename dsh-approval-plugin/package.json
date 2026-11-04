@@ -1,0 +1,19 @@
+{
+  "name": "dsh-approval",
+  "version": "1.0.0",
+  "description": "DSH 分级审批系统 - 四级审批 + 策略引擎",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=0.1.0"
+  }
+}

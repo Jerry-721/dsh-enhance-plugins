@@ -1,0 +1,8 @@
+# Sandbox Plugin - DSH bundle patch
+- insert:
+    - id: sandbox-runner
+      name: 'dsh-sandbox'
+      config:
+        enabled: true
+        defaultTimeoutMs: 60000
+        maxMemoryMB: 512

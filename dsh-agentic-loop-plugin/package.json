@@ -1,0 +1,21 @@
+{
+  "name": "dsh-agentic-loop",
+  "version": "1.0.0",
+  "description": "Agentic Loop (Plan-Execute-Reflect) system ported from Codex CLI, integrated with DSH AgentTeams",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": ["dsh", "plugin", "agentic", "loop", "codex"],
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,58 @@
+{
+  "name": "dsh-profile-desktop",
+  "private": true,
+  "dependencies": {
+    "@deepseek-harness-tui/dsh-tui": "0.16.1",
+    "@linxin666/dsh-web-all": "0.4.8",
+    "@liustack/modlens": "3.27.1",
+    "@nanmicoder/dsh-agent-teams": "0.1.25",
+    "@tt-a1i/archify-dsh": "1.0.0",
+    "dsh-better-sidebar": "0.28.0",
+    "dsh-context": "0.73.3",
+    "dsh-open-design": "file:C:\\Users\\jerry\\Documents\\deepseek-harness\\default-workspace\\open-design-extracted\\omegapaopao-dsh-open-design-a9d4f4c\\dsh-open-design",
+    "dsh-our-free-model": "https://github.com/Ebony-Vinyl/dsh-our-free-model/releases/download/v2.5.6/dsh-our-free-model-2.5.6.tgz",
+    "dshmarket": "^1.66.42",
+    "misakanet": "2.48.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "dsh-skill-manifest": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-skill-plugin",
+    "dsh-approval": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-approval-plugin",
+    "dsh-mcp": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-mcp-plugin",
+    "dsh-memory": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-memory-plugin",
+    "dsh-hooks": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-hooks-plugin",
+    "dsh-auto-mode": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-auto-mode-plugin",
+    "dsh-agentic-loop": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-agentic-loop-plugin",
+    "dsh-sandbox": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-sandbox-plugin",
+    "dsh-canvas": "file:C:/Users/jerry/Documents/deepseek-harness/default-workspace/dsh-canvas-plugin"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dshmarket",
+        "dsh-our-free-model",
+        "@deepseek-ai/dsh-experimental-agent-team-profile",
+        "@deepseek-ai/dsh-experimental-voice-input-bundle",
+        "@deepseek-ai/dsh-experimental-auto-review",
+        "@tt-a1i/archify-dsh",
+        "@linxin666/dsh-web-all",
+        "@liustack/modlens",
+        "dsh-better-sidebar",
+        "@deepseek-harness-tui/dsh-tui",
+        "@nanmicoder/dsh-agent-teams",
+        "dsh-context",
+        "dsh-open-design",
+        "misakanet",
+        "dsh-skill-manifest",
+        "dsh-approval",
+        "dsh-mcp",
+        "dsh-memory",
+        "dsh-hooks",
+        "dsh-auto-mode",
+        "dsh-agentic-loop",
+        "dsh-sandbox",
+        "dsh-canvas"
+      ]
+    }
+  }
+}

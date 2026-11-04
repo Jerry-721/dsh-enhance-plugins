@@ -1,0 +1,35 @@
+# ============================================================
+# 本仓库只发布 9 个 DSH 增强插件的源码与配套文档。
+# workspace 里其余的临时脚本、截图、日志、个人数据一律不入库，
+# 因此这里采用「先全忽略、再白名单」的写法。
+# ============================================================
+
+/*
+!.gitignore
+!.gitattributes
+!README.md
+!项目说明.txt
+
+# ---- 项目本体：9 个插件 ----
+!/dsh-skill-plugin/
+!/dsh-approval-plugin/
+!/dsh-mcp-plugin/
+!/dsh-memory-plugin/
+!/dsh-hooks-plugin/
+!/dsh-auto-mode-plugin/
+!/dsh-agentic-loop-plugin/
+!/dsh-sandbox-plugin/
+!/dsh-canvas-plugin/
+
+# ---- 配套文档与自检脚本 ----
+!/dsh-upgrades/
+!/dsh-super-upgrades/
+
+# ---- 通用垃圾 ----
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.log
+**/.DS_Store
+**/Thumbs.db

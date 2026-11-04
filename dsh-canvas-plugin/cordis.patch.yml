@@ -1,0 +1,7 @@
+# Canvas Plugin - DSH bundle patch
+- insert:
+    - id: canvas-editor
+      name: 'dsh-canvas'
+      config:
+        enabled: true
+        autoSync: true

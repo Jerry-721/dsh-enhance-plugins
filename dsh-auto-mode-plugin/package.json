@@ -1,0 +1,16 @@
+{
+  "name": "dsh-auto-mode",
+  "version": "1.0.0",
+  "description": "DSH Auto Mode - 全自动执行模式，移植自 Claude Code auto mode",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {}
+}

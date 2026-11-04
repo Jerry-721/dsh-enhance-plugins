@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "DSH Office Skills Manifest - 结构化 skill 元数据",
+  "skills": {
+    "office": {
+      "name": "office",
+      "description": "Create, edit, inspect, or convert Office documents, spreadsheets, presentations, and PDFs. Load to choose the relevant workflow.",
+      "trigger": ["office", "word", "excel", "ppt", "powerpoint", "文档", "演示", "表格", "office文档"],
+      "toolDeps": [],
+      "requiresPythonLibs": [],
+      "composite": true,
+      "parentSkill": null,
+      "subSkills": ["office-docx", "office-pptx", "office-xlsx", "office-render", "office-export-pdf", "office-recalculate"],
+      "priority": 1,
+      "category": "office",
+      "loadOrder": 0,
+      "metadata": {
+        "version": "1.0.0",
+        "author": "DeepSeek Harness",
+        "license": "MIT"
+      }
+    },
+    "office-docx": {
+      "name": "office-docx",
+      "description": "Create, read, edit, and validate Word documents (.docx).",
+      "trigger": ["docx", "word", "文档", "创建word", "编辑word", ".docx"],
+      "toolDeps": ["bash", "read", "edit", "write", "present", "glob"],
+      "requiresPythonLibs": ["python-docx"],
+      "composite": false,
+      "parentSkill": "office",
+      "subSkills": ["office-render", "office-export-pdf"],
+      "priority": 10,
+      "category": "office",
+      "loadOrder": 1,
+      "metadata": {
+        "version": "1.0.0",
+        "source": "SKILL.md",
+        "compatibility": {
+          "minDshVersion": "0.2.0"
+        }
+      }
+    },
+    "office-pptx": {
+      "name": "office-pptx",
+      "description": "Create, read, edit, and validate PowerPoint presentations (.pptx).",
+      "trigger": ["pptx", "powerpoint", "演示文稿", "幻灯片", "创建ppt", ".pptx"],
+      "toolDeps": ["bash", "read", "edit", "write", "present", "glob"],
+      "requiresPythonLibs": ["python-pptx"],
+      "composite": false,
+      "parentSkill": "office",
+      "subSkills": ["office-render", "office-export-pdf"],
+      "priority": 10,
+      "category": "office",
+      "loadOrder": 2,
+      "metadata": {
+        "version": "1.0.0",
+        "source": "SKILL.md"
+      }
+    },
+    "office-xlsx": {
+      "name": "office-xlsx",
+      "description": "Read, create, edit, and validate Excel workbooks, data, and formulas (.xlsx).",
+      "trigger": ["xlsx", "excel", "表格", "工作簿", "创建excel", "公式", ".xlsx"],
+      "toolDeps": ["bash", "read", "edit", "write", "present", "glob"],
+      "requiresPythonLibs": ["openpyxl", "pandas"],
+      "composite": false,
+      "parentSkill": "office",
+      "subSkills": ["office-render", "office-export-pdf", "office-recalculate"],
+      "priority": 10,
+      "category": "office",
+      "loadOrder": 3,
+      "metadata": {
+        "version": "1.0.0",
+        "source": "SKILL.md"
+      }
+    },
+    "office-render": {
+      "name": "office-render",
+      "description": "Render requested document images or inspect visual layout with LibreOffice Kit.",
+      "trigger": ["render", "预览", "图片", "视觉", "layout", "spacing", "对齐", "字体大小"],
+      "toolDeps": ["bash"],
+      "requiresBinaries": ["libreoffice-kit"],
+      "composite": false,
+      "parentSkill": "office",
+      "subSkills": [],
+      "priority": 5,
+      "category": "office",
+      "loadOrder": 4,
+      "metadata": {
+        "version": "1.0.0",
+        "source": "SKILL.md",
+        "dependencies": {
+          "libreoffice-kit": "required"
+        }
+      }
+    },
+    "office-export-pdf": {
+      "name": "office-export-pdf",
+      "description": "Convert an Office document to a requested PDF with LibreOffice Kit.",
+      "trigger": ["pdf", "导出", "conversion", "转换为pdf"],
+      "toolDeps": ["bash"],
+      "requiresBinaries": ["libreoffice-kit"],
+      "composite": false,
+      "parentSkill": "office",
+      "subSkills": [],
+      "priority": 5,
+      "category": "office",
+      "loadOrder": 5,
+      "metadata": {
+        "version": "1.0.0",
+        "source": "SKILL.md"
+      }
+    },
+    "office-recalculate": {
+      "name": "office-recalculate",
+      "description": "Refresh spreadsheet formula caches and verify calculated values with LibreOffice Kit.",
+      "trigger": ["recalculate", "公式", "计算", "刷新", "重新计算"],
+      "toolDeps": ["bash"],
+      "requiresBinaries": ["libreoffice-kit"],
+      "composite": false,
+      "parentSkill": "office",
+      "subSkills": [],
+      "priority": 5,
+      "category": "office",
+      "loadOrder": 6,
+      "metadata": {
+        "version": "1.0.0",
+        "source": "SKILL.md"
+      }
+    }
+  },
+  "routes": {
+    "autoLoadOnMatch": true,
+    "fallbackToComposite": true,
+    "maxDepth": 5
+  }
+}

@@ -1,0 +1,11 @@
+# Hooks Plugin - DSH bundle patch
+- insert:
+    - id: hooks-runner
+      name: 'dsh-hooks'
+      config:
+        enabled: true
+        hookDirs:
+          - ".dsh/hooks/pre-tool"
+          - ".dsh/hooks/post-tool"
+          - ".dsh/hooks/pre-session"
+          - ".dsh/hooks/post-session"

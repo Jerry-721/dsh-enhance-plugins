@@ -1,0 +1,19 @@
+{
+  "name": "dsh-skill-manifest",
+  "version": "1.0.0",
+  "description": "DSH Skills 结构化升级 - 自动路由 + manifest 管理",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=0.1.0"
+  }
+}

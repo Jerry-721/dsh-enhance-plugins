@@ -1,0 +1,7 @@
+# MCP Plugin - DSH bundle patch
+- insert:
+    - id: mcp-servers
+      name: 'dsh-mcp'
+      config:
+        enabled: true
+        servers: {}

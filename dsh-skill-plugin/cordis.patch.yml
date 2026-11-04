@@ -1,0 +1,8 @@
+# Skill Manifest Plugin - DSH bundle patch
+# Inserts this bundle's loader row (id is the stable handle profile overrides match).
+- insert:
+    - id: skill-manifest
+      name: 'dsh-skill-manifest'
+      config:
+        enabled: true
+        assetRoot: "D:\\dsh\\resources\\runtime\\office-skills"

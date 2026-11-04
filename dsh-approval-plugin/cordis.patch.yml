@@ -1,0 +1,24 @@
+# Approval Plugin - DSH bundle patch
+- insert:
+    - id: approval-policy
+      name: 'dsh-approval'
+      config:
+        enabled: true
+        defaultAction: "confirm"
+        rules:
+          - id: read-any
+            pattern: "*"
+            type: "file_read"
+            action: "auto-approve"
+          - id: write-docs
+            pattern: "*.{md,txt,json,yml,yaml}"
+            type: "file_write"
+            action: "auto-approve"
+          - id: exec-read-only
+            pattern: "^(ls|cat|head|tail|grep|find|which|echo|pwd)$"
+            type: "command_exec"
+            action: "auto-approve"
+          - id: exec-dangerous
+            pattern: "^(rm\\s+-rf|sudo\\s+rm|chmod\\s+777|mkfs)"
+            type: "command_exec"
+            action: "deny"

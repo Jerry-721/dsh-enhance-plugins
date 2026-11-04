@@ -1,0 +1,16 @@
+{
+  "name": "dsh-memory",
+  "version": "1.0.0",
+  "description": "DSH Memory System - 持久化项目记忆，移植自 Claude Code .claude/ 机制",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {}
+}

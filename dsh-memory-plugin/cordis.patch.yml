@@ -1,0 +1,8 @@
+# Memory Plugin - DSH bundle patch
+# apply(ctx, config) does not read any config key (paths are resolved at runtime),
+# so only the enable flag is declared here.
+- insert:
+    - id: memory-store
+      name: 'dsh-memory'
+      config:
+        enabled: true

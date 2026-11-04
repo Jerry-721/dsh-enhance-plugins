@@ -1,0 +1,7 @@
+# 统一按 LF 存储，避免 Windows 上 CRLF 混入仓库
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
+*.tgz binary
+*.gz binary

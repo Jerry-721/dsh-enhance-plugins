@@ -1,0 +1,17 @@
+# Auto Mode Plugin - DSH bundle patch
+- insert:
+    - id: auto-mode
+      name: 'dsh-auto-mode'
+      config:
+        enabled: true
+        autoApprove: true
+        denyPatterns:
+          - "rm -rf /"
+          - "sudo rm"
+          - "chmod 777"
+          - "mkfs"
+          - "dd /dev/"
+        confirmPatterns:
+          - "npm install"
+          - "pip install"
+          - "git push"
