@@ -1,8 +1,8 @@
 项目说明
 ========
 
-项目名称：enhance-plugins（DSH 增强插件集）
-仓库地址：https://github.com/Jerry-721/enhance-plugins
+项目名称：dsh-enhance-plugins（DSH 增强插件集）
+仓库地址：https://github.com/Jerry-721/dsh-enhance-plugins
 
 
 一、这是什么
