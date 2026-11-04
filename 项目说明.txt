@@ -1,0 +1,114 @@
+项目说明
+========
+
+项目名称：enhance-plugins（DSH 增强插件集）
+仓库地址：https://github.com/Jerry-721/enhance-plugins
+
+
+一、这是什么
+------------
+这是一套面向 DeepSeek Harness（DSH）的本地增强插件，一共 9 个。
+每个插件都是一条 /命令，装进 DSH 的 profile 就能用，不需要改 DSH 源码。
+思路是把 Claude Code、ChatGPT Canvas、Codex CLI 里好用的能力，
+按 DSH 自己的插件模型（Cordis）重新实现一遍.
+
+
+二、能力边界
+------------
+9 个插件都是「命令 + 本地状态文件」的形态，不接管 DSH 内核：
+不拦截工具调用、不改写审批流程、不注入 system prompt。
+它们提供的是可查询、可操作的本地能力，最终决策权仍在使用者和内核手里。
+如果你需要的是"真正拦住某次工具调用"，这套插件做不到，得改内核。
+
+
+三、主要功能
+------------
+1. /skills    技能清单与关键词匹配建议。读 office-skills-manifest.json，
+              按触发词给一句话打分，给出建议技能。只给建议，不改模型行为。
+
+2. /approve   策略判定。策略存 ~/.dsh/approval-policy.json，
+              按 deny → confirm → autoAllow 的顺序判断一段命令文本。
+
+3. /mcp       读写 ~/.dsh/mcp-servers.json，用 --help 探测命令是否可执行。
+              不建立真实 MCP 连接。
+
+4. /memory    两级持久记忆的增删查。全局 ~/.dsh/memory.md，
+              项目 <cwd>/.dsh/memory/workspace.md。/mem、/memo 是别名。
+
+5. /hooks     列出并手动执行 .dsh/hooks/ 下四个阶段的钩子：
+              pre-tool、post-tool、pre-session、post-session。
+              只在你敲命令时跑，不自动拦截工具调用。
+
+6. /auto      自动模式开关，状态存 ~/.dsh/auto-mode.json。
+              另有内置危险命令正则，给出一条命令的判定结果。
+
+7. /loop      按关键词（文档/表格/演示/通用）生成 4 步计划，
+              写进 .dsh/agentic-loop.json，用 next 逐格推进。
+              纯本地规划，不调 LLM，不自动执行。
+
+8. /sandbox   以子进程执行 Python / Node / Bash / PowerShell。
+              60 秒超时，stdout 和 stderr 各截断 3000 字符。
+              注意：这是超时与输出限制，不是内核级沙箱隔离。
+
+9. /canvas    工作区内 .md / .txt / .html 的 open、save、preview、list。
+              preview 用几条正则把 Markdown 转成极简 HTML。
+
+
+四、技术栈
+----------
+Node.js（ESM）、Cordis 插件内核、YAML patch 配置、pnpm/npm 的 file: 依赖。
+
+插件只使用 node: 内建模块，不引入任何第三方依赖。
+原因是插件目录常以 junction 挂进工作区，Node 按真实路径解析依赖，
+那里没有 node_modules，任何外部 import 都会让插件加载失败。
+
+
+五、怎么装
+----------
+1. 克隆本仓库
+2. 在 DSH profile 的 package.json 的 dependencies 里，用 file: 加上这 9 个包
+3. 把 9 个包名追加到 dsh.profile.bundles 数组
+4. pnpm install（或 npm install）后重启 DSH
+
+装完在输入框敲 / 应该能看到 skills、approve、mcp、memory、hooks、
+auto、loop、sandbox、canvas 这 9 条命令。
+
+dsh-upgrades/ 下带了两套自检脚本：
+  node dsh-upgrades/verify-plugins.mjs   静态检查
+  node dsh-upgrades/smoke-plugins.mjs    加载冒烟测试
+
+详细步骤见 README.md。
+
+
+六、目录结构
+------------
+dsh-skill-plugin/          技能清单
+dsh-approval-plugin/       分级审批
+dsh-mcp-plugin/            MCP 配置
+dsh-memory-plugin/         持久记忆
+dsh-hooks-plugin/          钩子脚本
+dsh-auto-mode-plugin/      自动模式
+dsh-agentic-loop-plugin/   任务循环
+dsh-sandbox-plugin/        代码沙箱
+dsh-canvas-plugin/         画布
+dsh-upgrades/              配套文档、自检脚本、方案设计稿
+dsh-super-upgrades/        与 Claude Code / ChatGPT / Codex CLI 的能力对标
+
+每个插件目录形态一致：index.js + package.json + cordis.patch.yml
+
+
+七、两条硬规则
+--------------
+1. Cordis 里任何 service 都要先在 export const inject 里声明，
+   否则一读就抛 cannot get property "xxx" without inject，
+   整个 apply 静默失败、命令注册不上。
+
+2. 只用 node: 内建模块，不要 import 第三方包，
+   否则 junction 目录里的依赖解析必失败。
+
+这两条在 dsh-upgrades/REPORT.md 里有完整的踩坑记录。
+
+
+八、许可
+--------
+MIT
